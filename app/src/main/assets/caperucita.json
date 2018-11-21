@@ -1,0 +1,112 @@
+{
+"Título" : "La Caperucita Roja",
+
+"Texto_con_botones":[
+{
+    "Introducción_1" : "Había una vez una dulce niña que quería mucho a su madre y a su abuela. Les ayudaba en todo lo que podía y como era tan buena el día de su cumpleaños su abuela le regaló una caperuza roja. Como le gustaba tanto e iba con ella a todas partes, pronto todos empezaron a llamarla Caperucita roja.",
+    "Introducción_2" : "Un día la abuela de Caperucita, que vivía en el bosque, enfermó y la madre de Caperucita le pidió que le llevara una cesta con una torta y un tarro de mantequilla. Caperucita aceptó encantada.",
+    "Introducción_3" : "Empezó su camino entrando por el bosque y se encuentra dos caminos:"
+},
+  {
+    "Página_1_1_3" : "La mañana siguiente los padres abandonaron a los niños en el bosque. Gretel lloró, pero Hänsel le dijo que no se preocupara, que había ido tirando migas de pan por todo el camino.",
+    "Página_2_1_3" : "Pero cual fue su sorpresa, que cuando buscando el camino de vuelta los pájaros se habían comido el pan. Estaban perdidos hasta que encontraron esta casa de caramelo. Y la bruja que vivía en ella los había encerrado y les había dado de comer mucho para engordarlos y podérselos comer.",
+    "Página_3_1_3" : "La caperucita y los dos hermanos tenían miedo de que volviese la vieja"
+  },
+  {
+    "Página_1_2_3" : "El lobo mandó a Caperucita por el camino más largo y llegó antes que ella a casa de la abuelita. De modo que se hizo pasar por la pequeña y llamó a la puerta.",
+    "Página_2_2_3" : "- ¿Quién es?, contestó la abuelita",
+    "Página_3_2_3" : "Soy yo, Caperucita-dijo el lobo",
+    "Página_4_2_3" : "Que bien hija mía. Pasa, pasa",
+    "Página_5_2_3" : "El lobo entró, se abalanzó sobre la abuelita y se la comió de un bocado. Se puso su camisón y se metió en la cama a esperar a que llegara Caperucita.",
+    "Página_6_2_3" : "La pequeña se entretuvo en el bosque y tardó en llegar, al llegar llamó a la puerta.",
+    "Página_7_2_3" : "- ¿Quién es?, contestó el lobo tratando de afinar su voz",
+    "Página_8_2_3" : "- Soy yo, Caperucita. Te traigo una torta y un tarrito de mantequilla.",
+    "Página_9_2_3" : "- Qué bien hija mía. Pasa, pasa",
+    "Página_10_2_3" : "La voz de la abuelita sonaba diferente"
+  }
+],
+
+  "Texto_sin_botones":[
+    {
+      "Página_1_1_2" : "La niña caminaba tranquilamente por el camino por el bosque, cuando se encuentra con una casa de ensueño hecha de pan y cubierta de bizcocho y cuyas ventanas eran de azúcar. Tenía tanta hambre, que enseguida se lanzó a comer sobre ella. De repente miró por la ventana y vio a dos niños encerrados bajo llave en el interior de la casa. La vieja que cuidaba la casa parecía amable, pero no se confió y esperó a que abandonase la casa.",
+      "Página_2_1_2" : "Por fin la vieja salió a comprar y caperucita entró para salvar a los niños. Los niños le explicaron que eran hermanos, que se llamaban Hänsel y Gretel, que vivían con sus padres en el bosque en una humilde cabaña, pero como no tenían dinero para alimentarlos decidieron, durante la noche, abandonarlos en el bosque. Los niños escucharon toda la conversación y Hänsel le dijo a su hermana:",
+      "Página_3_1_2" : "-No te preocupes. Encontraré la forma de regresar a casa. Confía en mí."
+    },
+    {
+      "Página_1_2_2" : "La niña caminaba tranquilamente por el camino despejado cuando el lobo la vio y se acercó a ella.",
+      "Página_2_2_2" : "-¿Dónde vas Caperucita?",
+      "Página_3_2_2" : "-A casa de mi abuelita a llevarle esta cesta con una torta y mantequilla.",
+      "Página_4_2_2" : "- Yo también quería ir a verla…. así que, ¿por qué no hacemos una carrera? Tú ve por ese camino de aquí que yo iré por este otro.",
+      "Página_5_2_2" : "-¡Vale!"
+    },
+    {
+      "Página_1_1_4" : "Salen corriendo de la casa, y por el camino se encuentran con el cazador.",
+      "Página_2_1_4" : "-Socorro, en esa casa vive una vieja que nos quería comer.",
+      "Página_3_1_4" : "El cazador muy enfadado va hacia la casita de caramelo para buscar a la buja y le lanza una flecha envenenada"
+    },
+    {
+      "Página_1_2_4" : "Siguen escondidos en la habitación, pero con la puerta entreabierta, cuando llega la vieja de comprar, llama a Gretel y le dice:",
+      "Página_2_2_4" : "-¡Gretel, prepara el horno que vas a amasar pan! ordenó a la niña.",
+      "Página_3_2_4" : "La niña se imaginó algo terrible, y supo que en cuanto se despistara la bruja la arrojaría dentro del horno.",
+      "Página_4_2_4" : "- No sé cómo se hace - dijo la niña",
+      "Página_5_2_4" : "- ¡Niña tonta! ¡Quita del medio!",
+      "Página_6_2_4" : "Pero cuando la bruja metió la cabeza dentro del horno, la pequeña le dio un buen empujón, con la ayuda de su hermano y de caperucita y cerraron la puerta. ",
+      "Página_7_2_4" : "Los tres pequeños se abrazaron y lloraron de alegría al ver que habían salido vivos de aquella horrible situación. Estaban a punto de marcharse cuando se les ocurrió echar un vistazo por la casa de la bruja y, ¡qué sorpresa! Encontraron cajas llenas de perlas y piedras preciosas, así que se llenaron los bolsillos y se dispusieron a volver a casa."
+    },
+    {
+      "Página_1_3_4" : "Cuando Caperucita entró encontró diferente a la abuelita, aunque no supo bien porqué. ",
+      "Página_2_3_4" : "- ¡Abuelita, qué ojos más grandes tienes!",
+      "Página_3_3_4" : "- Sí, son para verte mejor hija mía",
+      "Página_4_3_4" : "- ¡Abuelita, qué orejas tan grandes tienes!",
+      "Página_5_3_4" : "- Claro, son para oírte mejor…",
+      "Página_6_3_4" : "- Pero abuelita, ¡qué dientes más grandes tienes!",
+      "Página_7_3_4" : "- ¡¡Son para comerte mejor!!",
+      "Página_8_3_4" : "En cuanto dijo esto el lobo se lanzó sobre Caperucita y se la comió también. Su estómago estaba tan lleno que el lobo se quedó dormido."
+    },
+    {
+      "Página_1_4_4" : "La Caperucita estaba en la puerta de entrada de la casita de la abuelita, y pidió ayuda al cazador que pasaba por allí y que había visto entrar al lobo en la casa de la abuelita. ",
+      "Página_2_4_4" : "Había pasado mucho rato y tratándose de un lobo…¡Dios sabía que podía haber pasado! De modo que entró dentro de la casa. Cuando llegó allí y vio al lobo con la panza hinchada se imaginó lo ocurrido, así que cogió su cuchillo y abrió la tripa del animal para sacar a la abuelita. Le llenó la panza con piedras y la volvió a coser. Cuando el lobo se despertó tenía mucha sed, fue corriendo hacia el rio y allí se ahogó"
+    }
+  ],
+
+"btn_elegir_izq":[
+  {"btn_elegir_1_izq" : "El camino sombrió"},
+  {"btn_elegir_2_izq": "Corren hacia la puerta para escapar"},
+  {"btn_elegir_3_izq" : "Decide entrar"}
+],
+
+"btn_elegir_der":[
+  {"btn_elegir_1_der":"El camino despejado"},
+  {"btn_elegir_2_der":"Se esconden en una habitación"},
+  {"btn_elegir_3_der":"No entra, ya que no reconoce la voz de la abuelita"}
+],
+
+"Preguntas":[
+  {"Pregunta_1_1": "¿Por qué abandonan los padres a Hänsel y Gretel?"},
+  {"Pregunta_2_1" : "¿Qué le propone hacer el lobo?"},
+  {"Pregunta_1_2": "¿A quién pide ayuda?"},
+  {"Pregunta_2_2": "¿Qué hizo el lobo después de comerse a la caperucita?"},
+  {"Pregunta_3_2": "¿Qué encuentran en la casa de la bruja?"},
+  {"Pregunta_4_2": "¿A quién salva el cazador?"}
+],
+
+"btn_respuesta_1":[
+  {
+    "Respuesta_1_1": "No los abandonan, los pierden"},
+  {"Respuesta_1_2" : "Hacer una carrera"},
+  {"Respuesta_1_2" : "Hacer una carrera"},
+  {"Respuesta_1_3" : "Al cazador"},
+  {"Respuesta_1_4" : "Dormirse"},
+  {"Respuestas_1_5" : "Limpiar"},
+  {"Respuesta_1_6": "Al lobo"}
+    ],
+
+"btn_respuesta_2" : [
+  {"Respuesta_2_1":"No los abandonan, los pierden"},
+  {"Respuesta_2_2": "Bailar una canción"},
+  {"Respuesta_3_2": "Al alcalde"},
+  {"Respuesta_4_2": "Limpiar la casa de la abuelita"},
+  {"Respuesta_6_2": "A la abuelita y a la caperucita"},
+  {"Respuesta_5_2": "Sapos y culebras"}
+]
+}
