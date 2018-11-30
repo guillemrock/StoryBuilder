@@ -1,0 +1,22 @@
+{
+  "Paginas": [
+    {
+      "id": "0",
+      "texto": "Había una vez una dulce niña que quería mucho a su madre y a su abuela.",
+      "boton_izq": "El camino sombrio",
+      "boton_der":"el camino despejado"
+    },
+    {
+      "id": "1",
+      "texto": "eiouuuuuuu",
+      "boton_izq": "1",
+      "boton_der":"2"
+    },
+    {
+      "id": "2",
+      "texto": "hola.",
+      "boton_izq": "3",
+      "boton_der":"4"
+    }
+  ]
+}
