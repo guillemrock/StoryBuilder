@@ -1,41 +1,57 @@
 package projecte.storybuilder;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
-public class PortadaActivity extends AppCompatActivity {
+public class PortadaActivity extends FragmentActivity {
 
+    private static final int NUM_PAGES=3;
     private Libro libro;
+    private List<String> secuenciaPaginas;
+
     private TextView texto;
     private Button boton_izq, boton_der;
+    private ViewPager viewpager;
+    private PagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada);
 
-        libro = new Libro();
 
+        libro = new Libro();
+        secuenciaPaginas = new ArrayList<>();
+        secuenciaPaginas.add("0");
+        secuenciaPaginas.add("1");
         cargaLibro();
 
+        viewpager=findViewById(R.id.viewpager);
+        mPagerAdapter=new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        viewpager.setAdapter(mPagerAdapter);
+
+        /*
         texto = findViewById(R.id.texto);
         boton_der = findViewById(R.id.boton_der);
         boton_izq = findViewById(R.id.boton_izq);
@@ -44,7 +60,35 @@ public class PortadaActivity extends AppCompatActivity {
         texto.setText(p0.getTexto());
         boton_izq.setText(p0.getBoton_izq());
         boton_der.setText(p0.getBoton_der());
+        */
 
+        // Fragment f = PaginaBotonesFragment.newInstance("titlulo", "derecha", "izquierda");
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(viewpager.getCurrentItem()==0){
+            super.onBackPressed();
+        }else{
+            viewpager.setCurrentItem(viewpager.getCurrentItem()-1);
+        }
+    }
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
+        public ScreenSlidePagerAdapter (FragmentManager fm){
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem (int position){
+            String idPag = secuenciaPaginas.get(position);
+            Pagina pag = libro.buscaPagina(idPag);
+            return PaginaBotonesFragment.newInstance(pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq());
+        }
+
+        @Override
+        public int getCount(){
+            return secuenciaPaginas.size();
+        }
     }
 
     private void cargaLibro() {
