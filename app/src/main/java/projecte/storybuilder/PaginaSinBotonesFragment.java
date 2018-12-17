@@ -15,7 +15,7 @@ public class PaginaSinBotonesFragment extends Fragment {
 
     private String texto;
 
-    public static PaginaBotonesFragment newInstance(String texto, String boton_der, String boton_izq) {
+    public static PaginaBotonesFragment newInstance(String texto) {
         PaginaBotonesFragment fragment = new PaginaBotonesFragment();
         Bundle bundle = new Bundle();
         bundle.putString(TEXTO, texto);
@@ -36,7 +36,7 @@ public class PaginaSinBotonesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_pagina_nobotones, container, false);
-        TextView textView = rootView.findViewById(R.id.texto);
+        TextView textView = rootView.findViewById(R.id.tV_sinBotones);
 
 
         textView.setText(this.texto);

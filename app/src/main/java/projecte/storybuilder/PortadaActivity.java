@@ -68,6 +68,12 @@ public class PortadaActivity extends FragmentActivity {
         // Fragment f = PaginaBotonesFragment.newInstance("titlulo", "derecha", "izquierda");
     }
 
+    public void paginaSiguiente(String idPag) {
+        secuenciaPaginas.add(idPag);
+        mPagerAdapter.notifyDataSetChanged();
+        viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+    }
+
     @Override
     public void onBackPressed(){
         if(viewpager.getCurrentItem()==0){
@@ -85,6 +91,9 @@ public class PortadaActivity extends FragmentActivity {
         public Fragment getItem (int position){
             String idPag = secuenciaPaginas.get(position);
             Pagina pag = libro.buscaPagina(idPag);
+            if (pag.getBoton_der() == null && pag.getBoton_izq() == null) {
+                return PaginaSinBotonesFragment.newInstance(pag.getTexto());
+            }
             return PaginaBotonesFragment.newInstance(pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq());
         }
 
@@ -114,12 +123,17 @@ public class PortadaActivity extends FragmentActivity {
                 Pagina pagina = new Pagina();
                 pagina.setId(pagina_json.getString("id"));
                 pagina.setTexto(pagina_json.getString("texto"));
-                btn_izq.setTexto(pagina_json.getString("texto_btn_izq"));
-                btn_izq.setTexto(pagina_json.getString("idTarget_izq"));
-                btn_der.setTexto(pagina_json.getString("texto_btn_der"));
-                btn_der.setTexto(pagina_json.getString("idTarget_der"));
 
+                if (pagina_json.has("boton")) {
+                    JSONArray botones = pagina_json.getJSONArray("boton");
+
+                    JSONObject boton0 = botones.getJSONObject(0);
+                    pagina.setBoton_izq(new Boton(boton0.getString("texto_btn_izq"), boton0.getString("idTarget_izq")));
+                    JSONObject boton1 = botones.getJSONObject(1);
+                    pagina.setBoton_der(new Boton(boton1.getString("texto_btn_der"), boton1.getString("idTarget_der")));
+                }
                 Log.i("StoryBuilder", "Pagina " + pagina.getId());
+
                 libro.addPagina(pagina);
                 libro.buscaPagina("id");
             }

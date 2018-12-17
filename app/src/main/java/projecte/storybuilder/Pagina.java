@@ -3,7 +3,7 @@ package projecte.storybuilder;
 public class Pagina {
     private int tipus; // 0 - Portada, 1 - Botons, 2 - Texto, 3 - Pregunta, 4 - Final
     private String texto;
-    private String boton_izq, boton_der;
+    private Boton boton_izq, boton_der;
     private String id, idTarget;
 
 
@@ -19,11 +19,11 @@ public class Pagina {
         this.texto = texto;
     }
 
-    public void setBoton_izq(String boton_izq) {
+    public void setBoton_izq(Boton boton_izq) {
         this.boton_izq = boton_izq;
     }
 
-    public void setBoton_der(String boton_der) {
+    public void setBoton_der(Boton boton_der) {
         this.boton_der = boton_der;
     }
 
@@ -37,11 +37,11 @@ public class Pagina {
         return texto;
     }
 
-    public String getBoton_izq() {
+    public Boton getBoton_izq() {
         return boton_izq;
     }
 
-    public String getBoton_der() {
+    public Boton getBoton_der() {
         return boton_der;
     }
 }

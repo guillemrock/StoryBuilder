@@ -20,12 +20,13 @@ public class PaginaBotonesFragment extends Fragment {
     private String boton_izq;
     private String boton_der;
 
-    public static PaginaBotonesFragment newInstance(String texto, String boton_der, String boton_izq) {
+    public static PaginaBotonesFragment newInstance(String texto, Boton boton_der, Boton boton_izq) {
         PaginaBotonesFragment fragment = new PaginaBotonesFragment();
         Bundle bundle = new Bundle();
         bundle.putString(TEXTO, texto);
-        bundle.putString(BOTON_DER, boton_der);
-        bundle.putString(BOTON_IZQ, boton_izq);
+        bundle.putString(BOTON_DER, boton_der.getTexto());
+        bundle.putString(BOTON_IZQ, boton_izq.getTexto());
+        // TODO: Paràmetres amb els IDs de les pàgines
         fragment.setArguments(bundle);
         fragment.setRetainInstance(true);
         return fragment;
@@ -45,23 +46,24 @@ public class PaginaBotonesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_pagina_botones, container, false);
-        TextView textView = rootView.findViewById(R.id.texto);
+        TextView textView = rootView.findViewById(R.id.tV_conBotones);
         Button btn_der = rootView.findViewById(R.id.boton_der);
         Button btn_izq = rootView.findViewById(R.id.boton_izq);
 
         btn_der.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void clickDer(View view) {
+            public void onClick(View view) {
+                PortadaActivity portada = (PortadaActivity) getActivity();
+                portada.paginaSiguiente("1");
+            }
+         });
+
+        btn_izq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });
-
-            btn_izq.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick (View view){
-
-                }
-            });
 
         textView.setText(this.texto);
         btn_der.setText(this.boton_der);
