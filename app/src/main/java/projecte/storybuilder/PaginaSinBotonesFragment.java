@@ -37,10 +37,7 @@ public class PaginaSinBotonesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_pagina_nobotones, container, false);
         TextView textView = rootView.findViewById(R.id.tV_sinBotones);
-
-
         textView.setText(this.texto);
-
         return rootView;
     }
 }

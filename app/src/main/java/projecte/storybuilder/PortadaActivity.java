@@ -71,7 +71,7 @@ public class PortadaActivity extends FragmentActivity {
     public void paginaSiguiente(String idPag) {
         secuenciaPaginas.add(idPag);
         mPagerAdapter.notifyDataSetChanged();
-        viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+        viewpager.setCurrentItem(secuenciaPaginas.size(), true);
     }
 
     @Override
@@ -88,13 +88,14 @@ public class PortadaActivity extends FragmentActivity {
         }
 
         @Override
-        public Fragment getItem (int position){
+        public Fragment getItem (int position) {
             String idPag = secuenciaPaginas.get(position);
             Pagina pag = libro.buscaPagina(idPag);
             if (pag.getBoton_der() == null && pag.getBoton_izq() == null) {
                 return PaginaSinBotonesFragment.newInstance(pag.getTexto());
+            } else {
+                return PaginaBotonesFragment.newInstance(pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq());
             }
-            return PaginaBotonesFragment.newInstance(pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq());
         }
 
         @Override
