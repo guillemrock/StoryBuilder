@@ -3,20 +3,24 @@
     {
       "id": "0",
       "texto": "Había una vez una dulce niña que quería mucho a su madre y a su abuela.",
-      "boton_izq": "El camino sombrio",
-      "boton_der":"el camino despejado"
+      "boton":[
+        {
+          "texto_btn_izq":"El camino sombrio",
+          "idTarget_izq":"1"
+        },
+        {
+          "texto_btn_der":"El camino despejado",
+          "idTarget_der":"2"
+        }
+      ]
     },
     {
       "id": "1",
-      "texto": "eiouuuuuuu",
-      "boton_izq": "1",
-      "boton_der":"2"
+      "texto": "El camino sombrio"
     },
     {
       "id": "2",
-      "texto": "hola.",
-      "boton_izq": "3",
-      "boton_der":"4"
+      "texto": "El camino despejado"
     }
   ]
 }

@@ -7,9 +7,13 @@ public class Pagina {
     private String id, idTarget;
 
 
-    /*public String getIdTarget() {
+    public String getIdTarget() {
         return idTarget;
-    }*/
+    }
+
+    public void setIdTarget(String idTarget) {
+        this.idTarget = idTarget;
+    }
 
     public void setTexto(String texto) {
         this.texto = texto;

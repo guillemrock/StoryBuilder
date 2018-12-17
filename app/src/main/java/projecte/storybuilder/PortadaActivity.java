@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class PortadaActivity extends FragmentActivity {
 
-    private static final int NUM_PAGES=3;
+    private Boton btn_izq, btn_der;
     private Libro libro;
     private List<String> secuenciaPaginas;
 
@@ -44,7 +46,8 @@ public class PortadaActivity extends FragmentActivity {
         libro = new Libro();
         secuenciaPaginas = new ArrayList<>();
         secuenciaPaginas.add("0");
-        secuenciaPaginas.add("1");
+
+
         cargaLibro();
 
         viewpager=findViewById(R.id.viewpager);
@@ -111,8 +114,11 @@ public class PortadaActivity extends FragmentActivity {
                 Pagina pagina = new Pagina();
                 pagina.setId(pagina_json.getString("id"));
                 pagina.setTexto(pagina_json.getString("texto"));
-                pagina.setBoton_der(pagina_json.getString("boton_der"));
-                pagina.setBoton_izq(pagina_json.getString("boton_izq"));
+                btn_izq.setTexto(pagina_json.getString("texto_btn_izq"));
+                btn_izq.setTexto(pagina_json.getString("idTarget_izq"));
+                btn_der.setTexto(pagina_json.getString("texto_btn_der"));
+                btn_der.setTexto(pagina_json.getString("idTarget_der"));
+
                 Log.i("StoryBuilder", "Pagina " + pagina.getId());
                 libro.addPagina(pagina);
                 libro.buscaPagina("id");
