@@ -105,7 +105,7 @@ public class PortadaActivity extends FragmentActivity {
 
     private void cargaLibro() {
         try {
-            InputStream stream = getAssets().open("pagina.json");
+            InputStream stream = getAssets().open("caperucita.json");
             InputStreamReader reader = new InputStreamReader(stream);
             BufferedReader in = new BufferedReader(reader);
             String str;
@@ -139,7 +139,7 @@ public class PortadaActivity extends FragmentActivity {
             }
         }
         catch (IOException e) {
-            Toast.makeText(this, "No he podido leer lord.json", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "No he podido leer el archivo json", Toast.LENGTH_SHORT)
                     .show();
         }
         catch (JSONException e) {
