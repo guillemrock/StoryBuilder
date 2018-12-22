@@ -21,6 +21,10 @@
     {
       "id": "2",
       "texto": "El camino despejado"
+    },
+    {
+      "id" : "3",
+      "texto": "Texto pregunta"
     }
   ]
 }

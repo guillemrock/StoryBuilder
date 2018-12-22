@@ -42,11 +42,9 @@ public class PortadaActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada);
 
-
         libro = new Libro();
         secuenciaPaginas = new ArrayList<>();
         secuenciaPaginas.add("0");
-
 
         cargaLibro();
 
@@ -69,6 +67,7 @@ public class PortadaActivity extends FragmentActivity {
     }
 
     public void paginaSiguiente(String idPag) {
+        secuenciaPaginas.add(idPag);
         secuenciaPaginas.add(idPag);
         mPagerAdapter.notifyDataSetChanged();
         viewpager.setCurrentItem(secuenciaPaginas.size(), true);
