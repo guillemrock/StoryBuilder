@@ -38,9 +38,6 @@ public class PaginaSinBotonesFragment extends Fragment {
         this.texto =     (args != null) ? args.getString(TEXTO) : null;
         this.idTarget =     (args != null) ? args.getString(ID_TARGET) : null;
         this.id =     (args != null) ? args.getString(ID) : null;
-        //PortadaActivity portada = (PortadaActivity) getActivity();
-        //if (!this.id.contentEquals("0"))
-        //  portada.paginaSiguiente(idTarget, false);
     }
 
     @Override

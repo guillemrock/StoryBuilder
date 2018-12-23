@@ -1,5 +1,6 @@
 package projecte.storybuilder;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.RadioButton;
+import android.view.Gravity;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -60,25 +62,25 @@ public class PortadaActivity extends FragmentActivity {
         boton_empezar = findViewById(R.id.btn_empezar);
         boton_anadirNombre = findViewById(R.id.btn_anadirNombre);
         editText = findViewById(R.id.editText);
-		
+
         boton_empezar.setOnClickListener(new View.OnClickListener() {
-             public void onClick(View v) {
-				paginaSiguiente("1", true);
-				texto = findViewById(R.id.tV_conBotones);
-				boton_der = findViewById(R.id.boton_der);
-				boton_izq = findViewById(R.id.boton_izq);
-				Pagina p1=libro.buscaPagina("1");
-				Fragment f = PaginaBotonesFragment.newInstance(p1.getId(), p1.getTexto(),p1.getBoton_der(),p1.getBoton_izq(), true);
-				texto.setText(p1.getTexto());
-				boton_izq.setText(p1.getBoton_izq().getTexto());
-				boton_der.setText(p1.getBoton_der().getTexto());
-				boton_empezar.setVisibility(View.GONE);
-				boton_anadirNombre.setVisibility(View.GONE);
-				editText.setVisibility(View.GONE);
-				ViewGroup.MarginLayoutParams marginparams = (ViewGroup.MarginLayoutParams) viewpager.getLayoutParams();
-				marginparams.bottomMargin = 0;
-             }
-         });
+            public void onClick(View v) {
+                paginaSiguiente("1", true);
+                texto = findViewById(R.id.tV_conBotones);
+                boton_der = findViewById(R.id.boton_der);
+                boton_izq = findViewById(R.id.boton_izq);
+                Pagina p1=libro.buscaPagina("1");
+                Fragment f = PaginaBotonesFragment.newInstance(p1.getId(), p1.getTexto(),p1.getBoton_der(),p1.getBoton_izq(), 0);
+                texto.setText(p1.getTexto());
+                boton_izq.setText(p1.getBoton_izq().getTexto());
+                boton_der.setText(p1.getBoton_der().getTexto());
+                boton_empezar.setVisibility(View.GONE);
+                boton_anadirNombre.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                ViewGroup.MarginLayoutParams marginparams = (ViewGroup.MarginLayoutParams) viewpager.getLayoutParams();
+                marginparams.bottomMargin = 0;
+            }
+        });
         boton_anadirNombre.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Nombre = editText.getText().toString();
@@ -103,44 +105,95 @@ public class PortadaActivity extends FragmentActivity {
             // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == 0) {
-                    String idPag = secuenciaPaginas.get(viewpager.getCurrentItem());
-                    Pagina pag = libro.buscaPagina(idPag);
-                    String id = pag.getId();
-                    if (!pag.getBotonesActivos()){
-                        boton_der = findViewById(R.id.boton_der);
-                        boton_izq = findViewById(R.id.boton_izq);
-                        boton_izq.setVisibility(View.INVISIBLE);
-                        boton_der.setVisibility(View.INVISIBLE);
-                    }
-                }
+                actualizaEstados();
             }
         });
     }
 
-/*    public void BorraDesdeId(String idPag){
-        int index = 0;
-        for (int i=0;i<secuenciaPaginas.size();i++){
-            if (secuenciaPaginas.get(i).contentEquals(idPag))
-                index= i;
+    public void actualizaEstados(){
+        String idPag = secuenciaPaginas.get(viewpager.getCurrentItem());
+        Pagina pag = libro.buscaPagina(idPag);
+        String id = pag.getId();
+        if (pag.getTipo() == 1){
+            boton_der = findViewById(R.id.boton_der);
+            boton_izq = findViewById(R.id.boton_izq);
+            texto = findViewById(R.id.tV_conBotones);
+            if ((boton_der.getVisibility()==View.VISIBLE) &&  (pag.getBotonesActivos() >0)){
+                boton_izq.setVisibility(View.INVISIBLE);
+                boton_der.setVisibility(View.INVISIBLE);
+                if (pag.getBotonesActivos() == 1) {
+                    texto.append("\n\n\n\n" + boton_izq.getText() + "   (ELEGIDO)\n");
+                    texto.append(boton_der.getText());
+                }
+                if (pag.getBotonesActivos() == 2) {
+                    texto.append("\n\n\n\n" + boton_izq.getText() + "\n");
+                    texto.append(boton_der.getText() + "   (ELEGIDO)\n");
+                }
+            }
         }
-        while(secuenciaPaginas.size()>index+1)
-            secuenciaPaginas.remove(secuenciaPaginas.size()-1);
-        mPagerAdapter.notifyDataSetChanged();
-        viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+        if (pag.getTipo() == 2){
+            paginaSiguiente(pag.getIdTarget(),false);
+        }
+        if (pag.getTipo() == 3){
+            TextView textView = findViewById(R.id.tV_pregunta);
+            Button btn = findViewById(R.id.check_btn);
+            RadioButton r1 = findViewById(R.id.respuesta1);
+            RadioButton r2 = findViewById(R.id.respuesta2);
+            RadioButton r3 = findViewById(R.id.respuesta3);
+            if ((btn.getVisibility()==View.VISIBLE) &&  (pag.getPreguntaOK() >0)){
+                //textView.setText(textView.getText()+"\n\nMuy bien!  Pasa de página " + Nombre);
+                btn.setVisibility(View.INVISIBLE);
+                if (pag.getPreguntaOK() == 1) {
+                    r2.setVisibility(View.INVISIBLE);
+                    r3.setVisibility(View.INVISIBLE);
+                }
+                if (pag.getPreguntaOK() == 2) {
+                    r1.setVisibility(View.INVISIBLE);
+                    r3.setVisibility(View.INVISIBLE);
+                }
+                if (pag.getPreguntaOK() == 3) {
+                    r1.setVisibility(View.INVISIBLE);
+                    r2.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
     }
-*/
-    public void ActivarBotones(String idPag, boolean estado){
+
+    public void ActivarBotones(String idPag, int estado){
         Pagina pag = libro.buscaPagina(idPag);
         pag.ActivarBotones(estado);
+        actualizaEstados();
+    }
+
+    public void setPreguntaOK(String idPag, int ok){
+        Pagina pag = libro.buscaPagina(idPag);
+        pag.setPreguntaOK(ok);
+        actualizaEstados();
+    }
+
+    public int getPreguntaOK(String idPag){
+        Pagina pag = libro.buscaPagina(idPag);
+        return pag.getPreguntaOK();
+    }
+
+    public void muestraToast(String texto, int duracion){
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, texto, duracion);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    public String getNombre(){
+        return Nombre;
     }
 
     public void paginaSiguiente(String idPag, boolean changePage) {
-        if (!secuenciaPaginas.contains(idPag))
+        if (!secuenciaPaginas.contains(idPag)){
             secuenciaPaginas.add(idPag);
-        mPagerAdapter.notifyDataSetChanged();
-        if (changePage)
-            viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+            mPagerAdapter.notifyDataSetChanged();
+            if (changePage)
+                viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+        }
     }
 
     @Override
@@ -165,13 +218,16 @@ public class PortadaActivity extends FragmentActivity {
                 case 0:
                 case 2:
                     return PaginaSinBotonesFragment.newInstance(pag.getId(), pag.getTexto(),pag.getIdTarget());
-                    //break;
+                //break;
                 case 1:
                     return PaginaBotonesFragment.newInstance(pag.getId(), pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq(), pag.getBotonesActivos());
-                    //break;
+                //break;
+                case 3:
+                    return Pregunta.newInstance(pag.getId(), pag.getIdTarget(), pag.getTexto(), pag.getResp1(), pag.getResp2(), pag.getResp3(), pag.getRespOK());
+                //break;
                 default:
                     return new Fragment();
-                    //break;
+                //break;
             }
         }
 
@@ -201,17 +257,24 @@ public class PortadaActivity extends FragmentActivity {
                 Pagina pagina = new Pagina();
                 pagina.setId(pagina_json.getString("id"));
                 pagina.setTexto(pagina_json.getString("texto"));
-				pagina.setIdTarget(pagina_json.getString("id_target"));
-                pagina.setTipo(pagina_json.getInt("tipo"));
-
-                if (pagina_json.has("boton")) {
+                pagina.setIdTarget(pagina_json.getString("id_target"));
+                int tipo = pagina_json.getInt("tipo");
+                pagina.setTipo(tipo);
+                if (tipo == 1) {
                     JSONArray botones = pagina_json.getJSONArray("boton");
 
                     JSONObject boton0 = botones.getJSONObject(0);
                     pagina.setBoton_izq(new Boton(boton0.getString("texto_btn_izq"), boton0.getString("idTarget_izq")));
                     JSONObject boton1 = botones.getJSONObject(1);
                     pagina.setBoton_der(new Boton(boton1.getString("texto_btn_der"), boton1.getString("idTarget_der")));
-                    pagina.ActivarBotones(true);
+                    pagina.ActivarBotones(0);
+                }
+                if (tipo == 3) {
+                    pagina.setRespuestas(pagina_json.getString("respuesta1"),
+                            pagina_json.getString("respuesta2"),
+                            pagina_json.getString("respuesta3"),
+                            pagina_json.getString("respuestaCorrecta"));
+                    pagina.setPreguntaOK(0);
                 }
                 Log.i("StoryBuilder", "Pagina " + pagina.getId());
 

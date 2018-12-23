@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tV_pregunta"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -31,7 +31,23 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tV_pregunta" />
+        app:layout_constraintTop_toBottomOf="@+id/tV_pregunta">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/respuesta1"
+            android:text="respuesta1" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/respuesta2"
+            android:text="respuesta2" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/respuesta3"
+            android:text="respuesta3" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/check_btn"

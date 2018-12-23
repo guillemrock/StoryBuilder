@@ -17,7 +17,7 @@ public class PaginaBotonesFragment extends Fragment {
     private static final String BOTON_IZQ = "boton izquierdo";
     private static final String ID_TARGET_DER = "id_target_der";
     private static final String ID_TARGET_IZQ = "id_target_izq";
-    private static boolean botonActivo;
+    private static int botonActivo;
     private String id;
     private String texto;
     private String boton_izq;
@@ -25,7 +25,7 @@ public class PaginaBotonesFragment extends Fragment {
     private String idTargerIzq;
     private String idTargetDer;
 
-    public static PaginaBotonesFragment newInstance(String id, String texto, Boton boton_der, Boton boton_izq, boolean botonesActivos) {
+    public static PaginaBotonesFragment newInstance(String id, String texto, Boton boton_der, Boton boton_izq, int botonesActivos) {
         PaginaBotonesFragment fragment = new PaginaBotonesFragment();
         Bundle bundle = new Bundle();
         bundle.putString(ID, id);
@@ -60,19 +60,14 @@ public class PaginaBotonesFragment extends Fragment {
         final TextView textView = rootView.findViewById(R.id.tV_conBotones);
         final Button btn_der = rootView.findViewById(R.id.boton_der);
         final Button btn_izq = rootView.findViewById(R.id.boton_izq);
-        if (botonActivo == false){
-            btn_izq.setVisibility(View.INVISIBLE);
-            btn_der.setVisibility(View.INVISIBLE);
-        }
 
         btn_der.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PortadaActivity portada = (PortadaActivity) getActivity();
                 portada.paginaSiguiente(idTargetDer, true);
-                portada.ActivarBotones(id,false);
-                textView.append("\n\n\n\n"+btn_izq.getText()+"\n");
-                textView.append(btn_der.getText()+"   (ELEGIDO)\n");
+                portada.ActivarBotones(id,2);
+                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",4);
             }
          });
 
@@ -81,9 +76,8 @@ public class PaginaBotonesFragment extends Fragment {
             public void onClick(View view) {
                 PortadaActivity portada = (PortadaActivity) getActivity();
                 portada.paginaSiguiente(idTargerIzq, true);
-                portada.ActivarBotones(id,false);
-                textView.append("\n\n\n\n"+btn_izq.getText()+"   (ELEGIDO)\n");
-                textView.append(btn_der.getText());
+                portada.ActivarBotones(id,1);
+                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",4);
             }
         });
 
