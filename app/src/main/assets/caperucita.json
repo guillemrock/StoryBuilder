@@ -1,10 +1,13 @@
 {
 	"Paginas": [{
 			"id": "0",
-			"texto": "La Caperucita roja"
+			"tipo": "0",
+			"texto": "La Caperucita roja",
+			"id_target": "1"
 		},
 		{
 			"id": "1",
+			"tipo": "1",
 			"texto": "Había una vez una dulce niña que quería mucho a su madre y a su abuela. Les ayudaba en todo lo que podía y como era tan buena el día de su cumpleaños su abuela le regaló una caperuza roja. Como le gustaba tanto e iba con ella a todas partes, pronto todos empezaron a llamarla Caperucita roja.\n Un día la abuela de Caperucita, que vivía en el bosque, enfermó y la madre de Caperucita le pidió que le llevara una cesta con una torta y un tarro de mantequilla. Caperucita aceptó encantada.\nEmpezó su camino entrando por el bosque y se encuentra dos caminos:",
 			"boton": [{
 					"texto_btn_izq": "El camino sombrío",
@@ -19,16 +22,19 @@
 		},
 		{
 			"id": "2",
+			"tipo": "2",
 			"texto": "La niña caminaba tranquilamente por el camino por el bosque, cuando se encuentra con una casa de ensueño hecha de pan y cubierta de bizcocho y cuyas ventanas eran de azúcar. Tenía tanta hambre, que enseguida se lanzó a comer sobre ella. De repente miró por la ventana y vio a dos niños encerrados bajo llave en el interior de la casa. La vieja que cuidaba la casa parecía amable, pero no se confió y esperó a que abandonase la casa.\nPor fin la vieja salió a comprar y caperucita entró para salvar a los niños. Los niños le explicaron que eran hermanos, que se llamaban Hänsel y Gretel, que vivían con sus padres en el bosque en una humilde cabaña, pero como no tenían dinero para alimentarlos decidieron, durante la noche, abandonarlos en el bosque. Los niños escucharon toda la conversación y Hänsel le dijo a su hermana:\n-No te preocupes. Encontraré la forma de regresar a casa. Confía en mí.",
 			"id_target": "4"
 		},
 		{
 			"id": "3",
+			"tipo": "2",
 			"texto": "La niña caminaba tranquilamente por el camino despejado cuando el lobo la vio y se acercó a ella.\n-¿Dónde vas Caperucita?\n-A casa de mi abuelita a llevarle esta cesta con una torta y mantequilla.\n- Yo también quería ir a verla…. así que, ¿por qué no hacemos una carrera? Tú ve por ese camino de aquí que yo iré por este otro.\n-¡Vale!",
 			"id_target": "5"
 		},
 		{
 			"id": "4",
+			"tipo": "3",
 			"texto": "¿Por qué abandonan los padres a Hänsel y Gretel?",
 			"respuesta1": "No los abandonan, los pierden",
 			"respuesta2": "Porque no tienen dinero para alimentarlos",
@@ -38,6 +44,7 @@
 		},
 		{
 			"id": "5",
+			"tipo": "3",
 			"texto": "¿Qué le propone hacer el lobo?",
 			"respuesta1": "Hacer una carrera",
 			"respuesta2": "Bailar una canción",
@@ -47,6 +54,7 @@
 		},
 		{
 			"id": "6",
+			"tipo": "1",
 			"texto": "La mañana siguiente los padres abandonaron a los niños en el bosque. Gretel lloró, pero Hänsel le dijo que no se preocupara, que había ido tirando migas de pan por todo el camino.",
 			"boton": [{
 					"texto_btn_izq": "Corren hacia la puerta para escapar",
@@ -61,6 +69,7 @@
 		},
 		{
 			"id": "7",
+			"tipo": "1",
 			"texto": "El lobo mandó a Caperucita por el camino más largo y llegó antes que ella a casa de la abuelita. De modo que se hizo pasar por la pequeña y llamó a la puerta.\n- ¿Quién es?, contestó la abuelita\n- Soy yo, Caperucita - dijo el lobo\n- Que bien hija mía. Pasa, pasa\n\nEl lobo entró, se abalanzó sobre la abuelita y se la comió de un bocado. Se puso su camisón y se metió en la cama a esperar a que llegara Caperucita.\nLa pequeña se entretuvo en el bosque y tardó en llegar, al llegar llamó a la puerta.\n\n- ¿Quién es?, contestó el lobo tratando de afinar su voz\n- Soy yo, Caperucita. Te traigo una torta y un tarrito de mantequilla.\n- Qué bien hija mía. Pasa, pasa\nLa voz de la abuelita sonaba diferente",
 			"boton": [{
 					"texto_btn_izq": "Decide entrar",
@@ -75,26 +84,31 @@
 		},
 		{
 			"id": "8",
+			"tipo": "2",
 			"texto": "Salen corriendo de la casa, y por el camino se encuentran con el cazador.\n-Socorro, en esa casa vive una vieja que nos quería comer.\nEl cazador muy enfadado va hacia la casita de caramelo para buscar a la buja y le lanza una flecha envenenada.",
 			"id_target": "12"
 		},
 		{
 			"id": "9",
+			"tipo": "2",
 			"texto": "Cuando Caperucita entró encontró diferente a la abuelita, aunque no supo bien porqué.\n\n- ¡Abuelita, qué ojos más grandes tienes!\n- Sí, son para verte mejor hija mía\n- ¡Abuelita, qué orejas tan grandes tienes!\n- Claro, son para oírte mejor…\n- Pero abuelita, ¡qué dientes más grandes tienes!\n- ¡¡Son para comerte mejor!!\n\nEn cuanto dijo esto el lobo se lanzó sobre Caperucita y se la comió también. Su estómago estaba tan lleno que el lobo se quedó dormido.",
 			"id_target": "13"
 		},
 		{
 			"id": "10",
+			"tipo": "2",
 			"texto": "Siguen escondidos en la habitación, pero con la puerta entre abierta, cuando llega la vieja de comprar, llama a Gretel y le dice:\n-¡Gretel, prepara el horno que vas a amasar pan! ordenó a la niña.\nLa niña se imaginó algo terrible, y supo que en cuanto se despistara la bruja la arrojaría dentro del horno.\n- No sé cómo se hace - dijo la niña\n- ¡Niña tonta! ¡Quita del medio!\nPero cuando la bruja metió la cabeza dentro del horno, la pequeña le dio un buen empujón, con la ayuda de su hermano y de caperucita y cerraron la puerta.\nLos tres pequeños se abrazaron y lloraron de alegría al ver que habían salido vivos de aquella horrible situación. Estaban a punto de marcharse cuando se les ocurrió echar un vistazo por la casa de la bruja y, ¡qué sorpresa! Encontraron cajas llenas de perlas y piedras preciosas, así que se llenaron los bolsillos y se dispusieron a volver a casa.",
 			"id_target": "14"
 		},
 		{
 			"id": "11",
+			"tipo": "2",
 			"texto": "La Caperucita estaba en la puerta de entrada de la casita de la abuelita, y pidió ayuda al cazador que pasaba por allí y que había visto entrar al lobo en la casa de la abuelita.\nHabía pasado mucho rato y tratándose de un lobo…¡Dios sabía que podía haber pasado! De modo que entró dentro de la casa. Cuando llegó allí y vio al lobo con la panza hinchada se imaginó lo ocurrido, así que cogió su cuchillo y abrió la tripa del animal para sacar a la abuelita. Le llenó la panza con piedras y la volvió a coser. Cuando el lobo se despertó tenía mucha sed, fue corriendo hacia el rio y allí se ahogó",
 			"id_target": "15"
 		},
 		{
 			"id": "12",
+			"tipo": "3",
 			"texto": "¿A Quién piden ayuda?",
 			"respuesta1": "Al cazador",
 			"respuesta2": "Al alcalde",
@@ -104,6 +118,7 @@
 		},
 		{
 			"id": "13",
+			"tipo": "3",
 			"texto": "¿Qué hizo el lobo después de comerse a la caperucita?",
 			"respuesta1": "Limpiar la casa de la abuelita",
 			"respuesta2": "Hacer un pastel",
@@ -113,6 +128,7 @@
 		},
 		{
 			"id": "14",
+			"tipo": "3",
 			"texto": "¿Qué encuentran en la casa de la bruja?",
 			"respuesta1": "Sapos y culebras",
 			"respuesta2": "Cajas llenas de perlas y piedras preciosas",
@@ -122,6 +138,7 @@
 		},
 		{
 			"id": "15",
+			"tipo": "3",
 			"texto": "¿A quién salva el cazador?",
 			"respuesta1": "A la mama de la caperucita",
 			"respuesta2": "A la bruja",
@@ -131,7 +148,9 @@
 		},
 		{
 			"id": "16",
-			"texto": "Enhorabuena NOMBRE, ¿te ha gustado el cuento? Empieza de nuevo y elige otro camino"
+			"tipo": "4",
+			"texto": "Enhorabuena NOMBRE, ¿te ha gustado el cuento? Empieza de nuevo y elige otro camino",
+			"id_target": "-1"
 		}
 	]
 }

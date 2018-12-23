@@ -8,7 +8,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,9 +36,12 @@ public class PortadaActivity extends FragmentActivity {
     private List<String> secuenciaPaginas;
 
     private TextView texto;
-    private Button boton_izq, boton_der;
+    private Button boton_izq, boton_der,boton_empezar,boton_anadirNombre;
+    private EditText editText;
+
     private ViewPager viewpager;
     private PagerAdapter mPagerAdapter;
+    private String Nombre = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,26 +57,90 @@ public class PortadaActivity extends FragmentActivity {
         viewpager=findViewById(R.id.viewpager);
         mPagerAdapter=new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(mPagerAdapter);
+        boton_empezar = findViewById(R.id.btn_empezar);
+        boton_anadirNombre = findViewById(R.id.btn_anadirNombre);
+        editText = findViewById(R.id.editText);
+		
+        boton_empezar.setOnClickListener(new View.OnClickListener() {
+             public void onClick(View v) {
+				paginaSiguiente("1", true);
+				texto = findViewById(R.id.tV_conBotones);
+				boton_der = findViewById(R.id.boton_der);
+				boton_izq = findViewById(R.id.boton_izq);
+				Pagina p1=libro.buscaPagina("1");
+				Fragment f = PaginaBotonesFragment.newInstance(p1.getId(), p1.getTexto(),p1.getBoton_der(),p1.getBoton_izq(), true);
+				texto.setText(p1.getTexto());
+				boton_izq.setText(p1.getBoton_izq().getTexto());
+				boton_der.setText(p1.getBoton_der().getTexto());
+				boton_empezar.setVisibility(View.GONE);
+				boton_anadirNombre.setVisibility(View.GONE);
+				editText.setVisibility(View.GONE);
+				ViewGroup.MarginLayoutParams marginparams = (ViewGroup.MarginLayoutParams) viewpager.getLayoutParams();
+				marginparams.bottomMargin = 0;
+             }
+         });
+        boton_anadirNombre.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Nombre = editText.getText().toString();
+            }
+        });
 
-        /*
-        texto = findViewById(R.id.texto);
-        boton_der = findViewById(R.id.boton_der);
-        boton_izq = findViewById(R.id.boton_izq);
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        Pagina p0=libro.buscaPagina("1");
-        texto.setText(p0.getTexto());
-        boton_izq.setText(p0.getBoton_izq());
-        boton_der.setText(p0.getBoton_der());
-        */
+            // This method will be invoked when a new page becomes selected.
+            @Override
+            public void onPageSelected(int position) {
+                //code here
+            }
 
-        // Fragment f = PaginaBotonesFragment.newInstance("titlulo", "derecha", "izquierda");
+            // This method will be invoked when the current page is scrolled
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //code here
+            }
+
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if (state == 0) {
+                    String idPag = secuenciaPaginas.get(viewpager.getCurrentItem());
+                    Pagina pag = libro.buscaPagina(idPag);
+                    String id = pag.getId();
+                    if (!pag.getBotonesActivos()){
+                        boton_der = findViewById(R.id.boton_der);
+                        boton_izq = findViewById(R.id.boton_izq);
+                        boton_izq.setVisibility(View.INVISIBLE);
+                        boton_der.setVisibility(View.INVISIBLE);
+                    }
+                }
+            }
+        });
     }
 
-    public void paginaSiguiente(String idPag) {
-        secuenciaPaginas.add(idPag);
-        secuenciaPaginas.add(idPag);
+/*    public void BorraDesdeId(String idPag){
+        int index = 0;
+        for (int i=0;i<secuenciaPaginas.size();i++){
+            if (secuenciaPaginas.get(i).contentEquals(idPag))
+                index= i;
+        }
+        while(secuenciaPaginas.size()>index+1)
+            secuenciaPaginas.remove(secuenciaPaginas.size()-1);
         mPagerAdapter.notifyDataSetChanged();
-        viewpager.setCurrentItem(secuenciaPaginas.size(), true);
+        viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
+    }
+*/
+    public void ActivarBotones(String idPag, boolean estado){
+        Pagina pag = libro.buscaPagina(idPag);
+        pag.ActivarBotones(estado);
+    }
+
+    public void paginaSiguiente(String idPag, boolean changePage) {
+        if (!secuenciaPaginas.contains(idPag))
+            secuenciaPaginas.add(idPag);
+        mPagerAdapter.notifyDataSetChanged();
+        if (changePage)
+            viewpager.setCurrentItem(secuenciaPaginas.size()-1, true);
     }
 
     @Override
@@ -81,6 +151,7 @@ public class PortadaActivity extends FragmentActivity {
             viewpager.setCurrentItem(viewpager.getCurrentItem()-1);
         }
     }
+
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
         public ScreenSlidePagerAdapter (FragmentManager fm){
             super(fm);
@@ -90,10 +161,17 @@ public class PortadaActivity extends FragmentActivity {
         public Fragment getItem (int position) {
             String idPag = secuenciaPaginas.get(position);
             Pagina pag = libro.buscaPagina(idPag);
-            if (pag.getBoton_der() == null && pag.getBoton_izq() == null) {
-                return PaginaSinBotonesFragment.newInstance(pag.getTexto());
-            } else {
-                return PaginaBotonesFragment.newInstance(pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq());
+            switch (pag.getTipo()){
+                case 0:
+                case 2:
+                    return PaginaSinBotonesFragment.newInstance(pag.getId(), pag.getTexto(),pag.getIdTarget());
+                    //break;
+                case 1:
+                    return PaginaBotonesFragment.newInstance(pag.getId(), pag.getTexto(), pag.getBoton_der(), pag.getBoton_izq(), pag.getBotonesActivos());
+                    //break;
+                default:
+                    return new Fragment();
+                    //break;
             }
         }
 
@@ -123,6 +201,8 @@ public class PortadaActivity extends FragmentActivity {
                 Pagina pagina = new Pagina();
                 pagina.setId(pagina_json.getString("id"));
                 pagina.setTexto(pagina_json.getString("texto"));
+				pagina.setIdTarget(pagina_json.getString("id_target"));
+                pagina.setTipo(pagina_json.getInt("tipo"));
 
                 if (pagina_json.has("boton")) {
                     JSONArray botones = pagina_json.getJSONArray("boton");
@@ -131,6 +211,7 @@ public class PortadaActivity extends FragmentActivity {
                     pagina.setBoton_izq(new Boton(boton0.getString("texto_btn_izq"), boton0.getString("idTarget_izq")));
                     JSONObject boton1 = botones.getJSONObject(1);
                     pagina.setBoton_der(new Boton(boton1.getString("texto_btn_der"), boton1.getString("idTarget_der")));
+                    pagina.ActivarBotones(true);
                 }
                 Log.i("StoryBuilder", "Pagina " + pagina.getId());
 

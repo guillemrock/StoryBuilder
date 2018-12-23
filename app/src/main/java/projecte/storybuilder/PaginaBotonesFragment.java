@@ -11,22 +11,24 @@ import android.widget.TextView;
 
 public class PaginaBotonesFragment extends Fragment {
 
-
+    private static final String ID = "id";
     private static final String TEXTO = "texto";
     private static final String BOTON_DER = "boton derecho";
     private static final String BOTON_IZQ = "boton izquierdo";
     private static final String ID_TARGET_DER = "id_target_der";
     private static final String ID_TARGET_IZQ = "id_target_izq";
-
+    private static boolean botonActivo;
+    private String id;
     private String texto;
     private String boton_izq;
     private String boton_der;
     private String idTargerIzq;
     private String idTargetDer;
 
-    public static PaginaBotonesFragment newInstance(String texto, Boton boton_der, Boton boton_izq) {
+    public static PaginaBotonesFragment newInstance(String id, String texto, Boton boton_der, Boton boton_izq, boolean botonesActivos) {
         PaginaBotonesFragment fragment = new PaginaBotonesFragment();
         Bundle bundle = new Bundle();
+        bundle.putString(ID, id);
         bundle.putString(TEXTO, texto);
         bundle.putString(BOTON_DER, boton_der.getTexto());
         bundle.putString(BOTON_IZQ, boton_izq.getTexto());
@@ -34,6 +36,7 @@ public class PaginaBotonesFragment extends Fragment {
         bundle.putString(ID_TARGET_IZQ, boton_izq.getIdTarget());
         fragment.setArguments(bundle);
         fragment.setRetainInstance(true);
+        botonActivo = botonesActivos;
         return fragment;
     }
 
@@ -43,6 +46,7 @@ public class PaginaBotonesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Bundle args = getArguments();
+        this.id =     (args != null) ? args.getString(ID) : null;
         this.texto =     (args != null) ? args.getString(TEXTO) : null;
         this.boton_izq = (args != null) ? args.getString(BOTON_IZQ) : null;
         this.boton_der = (args != null) ? args.getString(BOTON_DER) : null;
@@ -53,15 +57,22 @@ public class PaginaBotonesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_pagina_botones, container, false);
-        TextView textView = rootView.findViewById(R.id.tV_conBotones);
-        Button btn_der = rootView.findViewById(R.id.boton_der);
-        Button btn_izq = rootView.findViewById(R.id.boton_izq);
+        final TextView textView = rootView.findViewById(R.id.tV_conBotones);
+        final Button btn_der = rootView.findViewById(R.id.boton_der);
+        final Button btn_izq = rootView.findViewById(R.id.boton_izq);
+        if (botonActivo == false){
+            btn_izq.setVisibility(View.INVISIBLE);
+            btn_der.setVisibility(View.INVISIBLE);
+        }
 
         btn_der.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PortadaActivity portada = (PortadaActivity) getActivity();
-                portada.paginaSiguiente(idTargetDer);
+                portada.paginaSiguiente(idTargetDer, true);
+                portada.ActivarBotones(id,false);
+                textView.append("\n\n\n\n"+btn_izq.getText()+"\n");
+                textView.append(btn_der.getText()+"   (ELEGIDO)\n");
             }
          });
 
@@ -69,7 +80,10 @@ public class PaginaBotonesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 PortadaActivity portada = (PortadaActivity) getActivity();
-                portada.paginaSiguiente(idTargerIzq);
+                portada.paginaSiguiente(idTargerIzq, true);
+                portada.ActivarBotones(id,false);
+                textView.append("\n\n\n\n"+btn_izq.getText()+"   (ELEGIDO)\n");
+                textView.append(btn_der.getText());
             }
         });
 

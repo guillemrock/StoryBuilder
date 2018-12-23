@@ -1,11 +1,11 @@
 package projecte.storybuilder;
 
 public class Pagina {
-    private int tipus; // 0 - Portada, 1 - Botons, 2 - Texto, 3 - Pregunta, 4 - Final
+    private int tipo; // 0 - Portada, 1 - Botons, 2 - Texto, 3 - Pregunta, 4 - Final
     private String texto;
     private Boton boton_izq, boton_der;
     private String id, idTarget;
-
+    private boolean botonesActivos;
 
     public String getIdTarget() {
         return idTarget;
@@ -30,6 +30,14 @@ public class Pagina {
     public void setId(String id) {
         this.id = id;
     }
+
+    public void ActivarBotones(boolean estado) {this.botonesActivos = estado;}
+
+    public void setTipo(int tipo) { this.tipo = tipo; }
+
+    public int getTipo() { return this.tipo; }
+
+    public boolean getBotonesActivos() { return this.botonesActivos;}
 
     public String getId() { return id; }
 
