@@ -1,6 +1,7 @@
 package projecte.storybuilder;
 
 import android.content.Context;
+import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,16 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RadioButton;
 import android.view.Gravity;
 import com.google.gson.JsonObject;
-import android.view.View.OnKeyListener;
-import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.content.Intent;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,20 +41,24 @@ public class PortadaActivity extends FragmentActivity {
     private List<String> secuenciaPaginas;
 
     private TextView texto;
-    private Button boton_izq, boton_der,boton_empezar,boton_anadirNombre;
+    private Button boton_izq, boton_der,boton_empezar;
     private EditText editText;
+    private ImageView imageView;
 
     private ViewPager viewpager;
     private PagerAdapter mPagerAdapter;
     private String Nombre = "";
     private boolean flag_borrar;
+    private Guideline guideline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
-        if (b!=null)
+        if (b!=null){
             Nombre = b.getString("Nombre","");
+            Nombre = Nombre.replace("\n", "").replace("\r", "");
+        }
         setContentView(R.layout.activity_portada);
         flag_borrar=false;
         libro = new Libro();
@@ -105,16 +108,19 @@ public class PortadaActivity extends FragmentActivity {
         texto = findViewById(R.id.tV_conBotones);
         boton_der = findViewById(R.id.boton_der);
         boton_izq = findViewById(R.id.boton_izq);
+        imageView = findViewById(R.id.imageView2);
+        guideline = findViewById(R.id.guideline4);
+        boton_empezar.setVisibility(View.GONE);
+        editText.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
+        guideline.setGuidelinePercent(1);
         Pagina p1=libro.buscaPagina("1");
         Fragment f = PaginaBotonesFragment.newInstance(p1.getId(), p1.getTexto(),p1.getBoton_der(),p1.getBoton_izq(), 0);
         texto.setText(p1.getTexto());
         boton_izq.setText(p1.getBoton_izq().getTexto());
         boton_der.setText(p1.getBoton_der().getTexto());
-        boton_empezar.setVisibility(View.GONE);
-        editText.setVisibility(View.GONE);
-        ViewGroup.MarginLayoutParams marginparams = (ViewGroup.MarginLayoutParams) viewpager.getLayoutParams();
-        marginparams.bottomMargin = 0;
         Nombre = editText.getText().toString();
+        Nombre = Nombre.replace("\n", "").replace("\r", "");
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
@@ -123,20 +129,21 @@ public class PortadaActivity extends FragmentActivity {
         String idPag = secuenciaPaginas.get(viewpager.getCurrentItem());
         Pagina pag = libro.buscaPagina(idPag);
         String id = pag.getId();
-        if (pag.getTipo() == 1){
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+         if (pag.getTipo() == 1){
             boton_der = findViewById(R.id.boton_der);
             boton_izq = findViewById(R.id.boton_izq);
             texto = findViewById(R.id.tV_conBotones);
-            if ((boton_der.getVisibility()==View.VISIBLE) &&  (pag.getBotonesActivos() >0)){
-                boton_izq.setVisibility(View.INVISIBLE);
-                boton_der.setVisibility(View.INVISIBLE);
+            if ((boton_der.isEnabled()) &&  (pag.getBotonesActivos() >0)){
+                boton_izq.setEnabled(false);
+                boton_der.setEnabled(false);
                 if (pag.getBotonesActivos() == 1) {
-                    texto.append("\n\n\n\n" + boton_izq.getText() + "   (ELEGIDO)\n");
-                    texto.append(boton_der.getText());
+                    boton_izq.setBackgroundDrawable( getResources().getDrawable(R.drawable.button_ganador));
+                    boton_der.setBackgroundDrawable( getResources().getDrawable(R.drawable.button_desactivado));
                 }
                 if (pag.getBotonesActivos() == 2) {
-                    texto.append("\n\n\n\n" + boton_izq.getText() + "\n");
-                    texto.append(boton_der.getText() + "   (ELEGIDO)\n");
+                    boton_der.setBackgroundDrawable( getResources().getDrawable(R.drawable.button_ganador));
+                    boton_izq.setBackgroundDrawable( getResources().getDrawable(R.drawable.button_desactivado));
                 }
             }
         }
@@ -149,9 +156,9 @@ public class PortadaActivity extends FragmentActivity {
             RadioButton r1 = findViewById(R.id.respuesta1);
             RadioButton r2 = findViewById(R.id.respuesta2);
             RadioButton r3 = findViewById(R.id.respuesta3);
-            if ((btn.getVisibility()==View.VISIBLE) &&  (pag.getPreguntaOK() >0)){
-                //textView.setText(textView.getText()+"\n\nMuy bien!  Pasa de página " + Nombre);
-                btn.setVisibility(View.INVISIBLE);
+            if ((btn.isEnabled()) &&  (pag.getPreguntaOK() >0)){
+                btn.setEnabled(false);
+                btn.setBackgroundDrawable( getResources().getDrawable(R.drawable.button_desactivado));
                 if (pag.getPreguntaOK() == 1) {
                     r2.setVisibility(View.INVISIBLE);
                     r3.setVisibility(View.INVISIBLE);
@@ -166,11 +173,6 @@ public class PortadaActivity extends FragmentActivity {
                 }
             }
         }
-        /*
-        if (pag.getTipo() == 4){
-            TextView textView = findViewById(R.id.tV_final);
-            Button btn = findViewById(R.id.btn_final);
-        }*/
     }
 
     public void ActivarBotones(String idPag, int estado){

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.text.method.ScrollingMovementMethod;
 
 public class PaginaSinBotonesFragment extends Fragment {
 
@@ -44,6 +45,7 @@ public class PaginaSinBotonesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_pagina_nobotones, container, false);
         TextView textView = rootView.findViewById(R.id.tV_sinBotones);
+        textView.setMovementMethod(new ScrollingMovementMethod());
         textView.setText(this.texto);
         return rootView;
     }

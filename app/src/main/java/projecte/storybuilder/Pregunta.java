@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.text.method.ScrollingMovementMethod;
 
 public class Pregunta extends Fragment {
 
@@ -63,6 +64,7 @@ public class Pregunta extends Fragment {
         View rootView = inflater.inflate(R.layout.pregunta, container, false);
         final TextView textView = rootView.findViewById(R.id.tV_pregunta);
         textView.setText(this.texto);
+        textView.setMovementMethod(new ScrollingMovementMethod());
         final Button btn = rootView.findViewById(R.id.check_btn);
         final RadioButton r1 = rootView.findViewById(R.id.respuesta1);
         final RadioButton r2 = rootView.findViewById(R.id.respuesta2);

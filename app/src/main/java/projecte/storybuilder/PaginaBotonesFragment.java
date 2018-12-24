@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.text.method.ScrollingMovementMethod;
 
 public class PaginaBotonesFragment extends Fragment {
 
@@ -60,6 +61,7 @@ public class PaginaBotonesFragment extends Fragment {
         final TextView textView = rootView.findViewById(R.id.tV_conBotones);
         final Button btn_der = rootView.findViewById(R.id.boton_der);
         final Button btn_izq = rootView.findViewById(R.id.boton_izq);
+        textView.setMovementMethod(new ScrollingMovementMethod());
 
         btn_der.setOnClickListener(new View.OnClickListener() {
             @Override

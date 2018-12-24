@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.text.method.ScrollingMovementMethod;
 
 public class PaginaFinalFragment extends Fragment {
 
@@ -47,6 +48,7 @@ public class PaginaFinalFragment extends Fragment {
         Button btn = rootView.findViewById(R.id.btn_final);
         PortadaActivity portada = (PortadaActivity) getActivity();
         textView.setText(this.texto.replace("NOMBRE",portada.getNombre().toUpperCase()));
+        textView.setMovementMethod(new ScrollingMovementMethod());
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
