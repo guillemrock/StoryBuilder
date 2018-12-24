@@ -67,7 +67,7 @@ public class PaginaBotonesFragment extends Fragment {
                 PortadaActivity portada = (PortadaActivity) getActivity();
                 portada.paginaSiguiente(idTargetDer, true);
                 portada.ActivarBotones(id,2);
-                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",4);
+                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",3);
             }
          });
 
@@ -77,7 +77,7 @@ public class PaginaBotonesFragment extends Fragment {
                 PortadaActivity portada = (PortadaActivity) getActivity();
                 portada.paginaSiguiente(idTargerIzq, true);
                 portada.ActivarBotones(id,1);
-                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",4);
+                portada.muestraToast("Adelante " + portada.getNombre().toUpperCase() + "!",3);
             }
         });
 

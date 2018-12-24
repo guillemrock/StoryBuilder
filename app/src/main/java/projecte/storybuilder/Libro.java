@@ -15,6 +15,10 @@ public class Libro {
         paginas.put(pagina.getId(), pagina);
     }
 
+    public void BorrarPaginas() {
+        paginas.clear();
+    }
+
     public Pagina buscaPagina(String id) {
         return paginas.get(id);
     }

@@ -93,6 +93,9 @@ public class Pregunta extends Fragment {
                 if (portada.getPreguntaOK(id) > 0){
                     portada.paginaSiguiente(idTarget, true);
                     portada.muestraToast("Respuesta correcta " + portada.getNombre().toUpperCase() + "!",4);
+                } else {
+                    portada.paginaAnterior();
+                    portada.muestraToast("Respuesta incorrecta,\n vuelve a leerlo " + portada.getNombre().toUpperCase() + "!",4);
                 }
             }
         });
