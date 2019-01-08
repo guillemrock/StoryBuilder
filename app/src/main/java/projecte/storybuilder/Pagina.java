@@ -3,7 +3,7 @@ package projecte.storybuilder;
 public class Pagina {
     private int tipo; // 0 - Portada, 1 - Botons, 2 - Texto, 3 - Pregunta, 4 - Final
     private String texto;
-    private Boton boton_izq, boton_der;
+    private Boton boton_izq, boton_der, boton_empezar;
     private String id, idTarget, resp1, resp2, resp3, respOK;
     private int botonesActivos;
     private int preguntaOK;
@@ -18,6 +18,14 @@ public class Pagina {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public Boton getBoton_empezar(Boton boton_empezar) {
+        return boton_empezar;
+    }
+
+    public void setBoton_empezar(Boton boton_empezar) {
+        this.boton_empezar = boton_empezar;
     }
 
     public void setBoton_izq(Boton boton_izq) {

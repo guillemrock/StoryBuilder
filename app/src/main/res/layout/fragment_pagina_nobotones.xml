@@ -19,7 +19,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         app:fontFamily="@font/architects_daughter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

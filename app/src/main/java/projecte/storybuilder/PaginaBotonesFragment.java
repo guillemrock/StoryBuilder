@@ -1,14 +1,17 @@
 package projecte.storybuilder;
 
-import android.support.v4.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.text.method.ScrollingMovementMethod;
+
+import com.bumptech.glide.Glide;
 
 public class PaginaBotonesFragment extends Fragment {
 
@@ -62,6 +65,13 @@ public class PaginaBotonesFragment extends Fragment {
         final Button btn_der = rootView.findViewById(R.id.boton_der);
         final Button btn_izq = rootView.findViewById(R.id.boton_izq);
         textView.setMovementMethod(new ScrollingMovementMethod());
+        ImageView imageView = rootView.findViewById(R.id.imageView3);
+
+        Glide.with(this).load("file:///android_asset/2.jpg").into(imageView);
+
+
+        Typeface typeface = getResources().getFont(R.font.architects_daughter);
+        textView.setTypeface(typeface);
 
         btn_der.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,15 +1,19 @@
 package projecte.storybuilder;
 
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
+
+import com.bumptech.glide.Glide;
 
 public class Pregunta extends Fragment {
 
@@ -63,8 +67,15 @@ public class Pregunta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.pregunta, container, false);
         final TextView textView = rootView.findViewById(R.id.tV_pregunta);
+        Typeface typeface = getResources().getFont(R.font.architects_daughter);
+        textView.setTypeface(typeface);
         textView.setText(this.texto);
         textView.setMovementMethod(new ScrollingMovementMethod());
+
+        ImageView imageView = rootView.findViewById(R.id.imageView3);
+
+        Glide.with(this).load("file:///android_asset/3.png").into(imageView);
+
         final Button btn = rootView.findViewById(R.id.check_btn);
         final RadioButton r1 = rootView.findViewById(R.id.respuesta1);
         final RadioButton r2 = rootView.findViewById(R.id.respuesta2);

@@ -1,13 +1,17 @@
 package projecte.storybuilder;
 
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
+
+import com.bumptech.glide.Glide;
 
 public class PaginaFinalFragment extends Fragment {
 
@@ -49,6 +53,12 @@ public class PaginaFinalFragment extends Fragment {
         PortadaActivity portada = (PortadaActivity) getActivity();
         textView.setText(this.texto.replace("NOMBRE",portada.getNombre().toUpperCase()));
         textView.setMovementMethod(new ScrollingMovementMethod());
+
+        ImageView imageView = rootView.findViewById(R.id.imageView4);
+        Glide.with(this).load("file:///android_asset/4.png").into(imageView);
+
+        Typeface typeface = getResources().getFont(R.font.architects_daughter);
+        textView.setTypeface(typeface);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

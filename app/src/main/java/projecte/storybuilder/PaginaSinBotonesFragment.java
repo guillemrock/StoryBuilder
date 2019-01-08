@@ -1,11 +1,13 @@
 package projecte.storybuilder;
 
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.text.method.ScrollingMovementMethod;
 
@@ -47,6 +49,11 @@ public class PaginaSinBotonesFragment extends Fragment {
         TextView textView = rootView.findViewById(R.id.tV_sinBotones);
         textView.setMovementMethod(new ScrollingMovementMethod());
         textView.setText(this.texto);
+
+
+        Typeface typeface = getResources().getFont(R.font.architects_daughter);
+        textView.setTypeface(typeface);
+
         return rootView;
     }
 }

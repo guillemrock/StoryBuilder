@@ -2,13 +2,14 @@
 	"Paginas": [{
 			"id": "0",
 			"tipo": "0",
-			"texto": " \n \n        ¿La Caperucita roja?",
+			"texto": "Bienvenido al cuento de la Caperucita roja, introduce tu nombre a continuación...",
+			"boton":{"text_boton":"Empezar"},
 			"id_target": "1"
 		},
 		{
 			"id": "1",
 			"tipo": "1",
-			"texto": "Había una vez una dulce niña que quería mucho a su madre y a su abuela. Les ayudaba en todo lo que podía y como era tan buena el día de su cumpleaños su abuela le regaló una caperuza roja. Como le gustaba tanto e iba con ella a todas partes, pronto todos empezaron a llamarla Caperucita roja.\n Un día la abuela de Caperucita, que vivía en el bosque, enfermó y la madre de Caperucita le pidió que le llevara una cesta con una torta y un tarro de mantequilla. Caperucita aceptó encantada.\nEmpezó su camino entrando por el bosque y se encuentra dos caminos: \n \n (Escoge una de las dos opciones)",
+			"texto": "Había una vez una dulce niña que quería mucho a su madre y a su abuela. Les ayudaba en todo lo que podía y como era tan buena el día de su cumpleaños su abuela le regaló una caperuza roja. Como le gustaba tanto e iba con ella a todas partes, pronto todos empezaron a llamarla Caperucita roja.\n Un día la abuela de Caperucita, que vivía en el bosque, enfermó y la madre de Caperucita le pidió que le llevara una cesta con una torta y un tarro de mantequilla. Caperucita aceptó encantada.\nEmpezó su camino entrando por el bosque y se encuentra dos caminos: \n \n ¿Qué camino debería tomar la Caperucita?",
 			"boton": [{
 					"texto_btn_izq": "El camino sombrío",
 					"idTarget_izq": "2"
@@ -18,7 +19,8 @@
 					"idTarget_der": "3"
 				}
 			],
-			"id_target": "-1"
+			"id_target": "-1",
+			"imagen": "caproja.jpg"
 		},
 		{
 			"id": "2",
@@ -55,7 +57,7 @@
 		{
 			"id": "6",
 			"tipo": "1",
-			"texto": "La mañana siguiente los padres abandonaron a los niños en el bosque. Gretel lloró, pero Hänsel le dijo que no se preocupara, que había ido tirando migas de pan por todo el camino. \n \n (Escoge una de las dos opciones)",
+			"texto": "La mañana siguiente los padres abandonaron a los niños en el bosque. Gretel lloró, pero Hänsel le dijo que no se preocupara, que había ido tirando migas de pan por todo el camino. \n \n ¿Qué deberían de hacer los niños?",
 			"boton": [{
 					"texto_btn_izq": "Corren hacia la puerta para escapar",
 					"idTarget_izq": "8"
@@ -70,7 +72,7 @@
 		{
 			"id": "7",
 			"tipo": "1",
-			"texto": "El lobo mandó a Caperucita por el camino más largo y llegó antes que ella a casa de la abuelita. De modo que se hizo pasar por la pequeña y llamó a la puerta.\n- ¿Quién es?, contestó la abuelita\n- Soy yo, Caperucita - dijo el lobo\n- Que bien hija mía. Pasa, pasa\n\nEl lobo entró, se abalanzó sobre la abuelita y se la comió de un bocado. Se puso su camisón y se metió en la cama a esperar a que llegara Caperucita.\nLa pequeña se entretuvo en el bosque y tardó en llegar, al llegar llamó a la puerta.\n\n- ¿Quién es?, contestó el lobo tratando de afinar su voz\n- Soy yo, Caperucita. Te traigo una torta y un tarrito de mantequilla.\n- Qué bien hija mía. Pasa, pasa\nLa voz de la abuelita sonaba diferente... \n \n (Escoge una de las dos opciones)",
+			"texto": "El lobo mandó a Caperucita por el camino más largo y llegó antes que ella a casa de la abuelita. De modo que se hizo pasar por la pequeña y llamó a la puerta.\n- ¿Quién es?, contestó la abuelita\n- Soy yo, Caperucita - dijo el lobo\n- Que bien hija mía. Pasa, pasa\n\nEl lobo entró, se abalanzó sobre la abuelita y se la comió de un bocado. Se puso su camisón y se metió en la cama a esperar a que llegara Caperucita.\nLa pequeña se entretuvo en el bosque y tardó en llegar, al llegar llamó a la puerta.\n\n- ¿Quién es?, contestó el lobo tratando de afinar su voz\n- Soy yo, Caperucita. Te traigo una torta y un tarrito de mantequilla.\n- Qué bien hija mía. Pasa, pasa\nLa voz de la abuelita sonaba diferente... \n \n ¿Qué decide hacer la abuelita?",
 			"boton": [{
 					"texto_btn_izq": "Decide entrar",
 					"idTarget_izq": "9"

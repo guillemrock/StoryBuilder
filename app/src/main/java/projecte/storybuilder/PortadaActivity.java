@@ -1,6 +1,8 @@
 package projecte.storybuilder;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -8,20 +10,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.RadioButton;
-import android.view.Gravity;
-import com.google.gson.JsonObject;
-import android.view.inputmethod.InputMethodManager;
-import android.content.Intent;
+
+import com.bumptech.glide.Glide;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class PortadaActivity extends FragmentActivity {
 
@@ -63,7 +65,8 @@ public class PortadaActivity extends FragmentActivity {
         flag_borrar=false;
         libro = new Libro();
         secuenciaPaginas = new ArrayList<>();
-        secuenciaPaginas.add("0");
+
+
 
         cargaLibro();
 
@@ -76,7 +79,7 @@ public class PortadaActivity extends FragmentActivity {
 
         boton_empezar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EmpezarClick();;
+                EmpezarClick();
             }
         });
 
@@ -108,11 +111,12 @@ public class PortadaActivity extends FragmentActivity {
         texto = findViewById(R.id.tV_conBotones);
         boton_der = findViewById(R.id.boton_der);
         boton_izq = findViewById(R.id.boton_izq);
-        imageView = findViewById(R.id.imageView2);
+        imageView = findViewById(R.id.imageView1);
         guideline = findViewById(R.id.guideline4);
         boton_empezar.setVisibility(View.GONE);
         editText.setVisibility(View.GONE);
         imageView.setVisibility(View.GONE);
+
         guideline.setGuidelinePercent(1);
         Pagina p1=libro.buscaPagina("1");
         Fragment f = PaginaBotonesFragment.newInstance(p1.getId(), p1.getTexto(),p1.getBoton_der(),p1.getBoton_izq(), 0);
@@ -123,6 +127,7 @@ public class PortadaActivity extends FragmentActivity {
         Nombre = Nombre.replace("\n", "").replace("\r", "");
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
     }
 
     public void actualizaEstados(){
@@ -130,6 +135,7 @@ public class PortadaActivity extends FragmentActivity {
         Pagina pag = libro.buscaPagina(idPag);
         String id = pag.getId();
         final int sdk = android.os.Build.VERSION.SDK_INT;
+
          if (pag.getTipo() == 1){
             boton_der = findViewById(R.id.boton_der);
             boton_izq = findViewById(R.id.boton_izq);
@@ -244,6 +250,7 @@ public class PortadaActivity extends FragmentActivity {
             Pagina pag = libro.buscaPagina(idPag);
             switch (pag.getTipo()){
                 case 0:
+
                 case 2:
                     return PaginaSinBotonesFragment.newInstance(pag.getId(), pag.getTexto(),pag.getIdTarget());
                 //break;
@@ -291,6 +298,7 @@ public class PortadaActivity extends FragmentActivity {
                 pagina.setIdTarget(pagina_json.getString("id_target"));
                 int tipo = pagina_json.getInt("tipo");
                 pagina.setTipo(tipo);
+
                 if (tipo == 1) {
                     JSONArray botones = pagina_json.getJSONArray("boton");
 
@@ -299,6 +307,8 @@ public class PortadaActivity extends FragmentActivity {
                     JSONObject boton1 = botones.getJSONObject(1);
                     pagina.setBoton_der(new Boton(boton1.getString("texto_btn_der"), boton1.getString("idTarget_der")));
                     pagina.ActivarBotones(0);
+
+
                 }
                 if (tipo == 3) {
                     pagina.setRespuestas(pagina_json.getString("respuesta1"),
