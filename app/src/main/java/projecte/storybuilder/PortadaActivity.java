@@ -65,8 +65,7 @@ public class PortadaActivity extends FragmentActivity {
         flag_borrar=false;
         libro = new Libro();
         secuenciaPaginas = new ArrayList<>();
-
-
+        secuenciaPaginas.add("0");
 
         cargaLibro();
 
@@ -307,9 +306,8 @@ public class PortadaActivity extends FragmentActivity {
                     JSONObject boton1 = botones.getJSONObject(1);
                     pagina.setBoton_der(new Boton(boton1.getString("texto_btn_der"), boton1.getString("idTarget_der")));
                     pagina.ActivarBotones(0);
-
-
                 }
+
                 if (tipo == 3) {
                     pagina.setRespuestas(pagina_json.getString("respuesta1"),
                             pagina_json.getString("respuesta2"),

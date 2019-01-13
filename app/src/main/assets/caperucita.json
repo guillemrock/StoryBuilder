@@ -2,7 +2,7 @@
 	"Paginas": [{
 			"id": "0",
 			"tipo": "0",
-			"texto": "Bienvenido al cuento de la Caperucita roja, introduce tu nombre a continuación...",
+			"texto": "Bienvenido al cuento de la Caperucita roja,\nIntroduce tu nombre a continuación...",
 			"boton":{"text_boton":"Empezar"},
 			"id_target": "1"
 		},
